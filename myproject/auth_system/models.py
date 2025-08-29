@@ -4,6 +4,7 @@ import bcrypt
 import jwt
 from datetime import datetime, timedelta
 from django.conf import settings
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -91,8 +92,8 @@ class User(AbstractBaseUser):
         """
         payload = {
             'user_id': self.id,
-            'exp': datetime.now() + timedelta(days=1),  # Токен действителен 1 день
-            'iat': datetime.now()  # Время создания токена
+            'exp': timezone.now() + timedelta(days=1),  # Токен действителен 1 день
+            'iat': timezone.now()  # Время создания токена
         }
         return jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
 
@@ -201,7 +202,7 @@ class Session(models.Model):
 
         Returns: True если сессия активна и не истекла, иначе False
         """
-        return self.is_active and datetime.now() < self.expires_at
+        return self.is_active and timezone.now() < self.expires_at
 
     def __str__(self):
         return f"Session for {self.user.email}"

@@ -13,7 +13,8 @@ def products_list(request):
 
     Returns: Response: Список продуктов или ошибка доступа
     """
-
+    print(f"Request user: {request.user}")
+    print(f"User authenticated: {request.user.is_authenticated}")
     # Проверка аутентификации пользователя
     if not request.user or not request.user.is_authenticated:
         return Response(

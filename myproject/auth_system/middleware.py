@@ -30,6 +30,7 @@ class AuthenticationMiddleware:
             try:
                 # Ищем активную сессию с данным токеном
                 session = Session.objects.select_related('user').get(token=token, is_active=True)
+
                 if session.is_valid():
                     # Устанавливаем пользователя в request
                     request.user = session.user
