@@ -1,0 +1,34 @@
+[
+    {
+        "model": "auth_system.role",
+        "pk": 1,
+        "fields": {
+            "name": "admin",
+            "description": "Администратор системы"
+        }
+    },
+    {
+        "model": "auth_system.role",
+        "pk": 2,
+        "fields": {
+            "name": "user",
+            "description": "Обычный пользователь"
+        }
+    },
+    {
+        "model": "auth_system.businesselement",
+        "pk": 1,
+        "fields": {
+            "name": "products",
+            "description": "Управление товарами"
+        }
+    },
+    {
+        "model": "auth_system.businesselement",
+        "pk": 2,
+        "fields": {
+            "name": "access_rules",
+            "description": "Управление правами доступа"
+        }
+    }
+]
